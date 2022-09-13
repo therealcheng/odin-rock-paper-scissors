@@ -1,6 +1,6 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
+import javascriptLogo from './javascript.svg';
+import { setupCounter } from './counter.js';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -18,6 +18,28 @@ document.querySelector('#app').innerHTML = `
       Click on the Vite logo to learn more
     </p>
   </div>
-`
+`;
 
-setupCounter(document.querySelector('#counter'))
+setupCounter(document.querySelector('#counter'));
+
+const getComputerChoice = function () {
+  const choice = ['rock', 'paper', 'scissors']; // array
+  // pick random string from array
+  let genChoice = choice[Math.floor(Math.random() * choice.length)]; // rand 1-3
+  console.log(genChoice);
+};
+
+getComputerChoice();
+
+const input = document.getElementById('choice');
+const submit = document.getElementById('submit');
+
+input.addEventListener('click', (e) => {
+  e.preventDefault();
+  input.value = '';
+});
+
+submit.addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log('works');
+});
