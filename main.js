@@ -22,6 +22,9 @@ document.querySelector('#app').innerHTML = `
 
 setupCounter(document.querySelector('#counter'));
 
+let playerScore = 0;
+let computerScore = 0;
+
 const getComputerChoice = function () {
   const choice = ['rock', 'paper', 'scissors']; // array
   // pick random string from array
@@ -30,24 +33,34 @@ const getComputerChoice = function () {
   return computerChoice;
 };
 
+const playerWins = function () {
+  console.log(`PLAYER WINS`);
+  playerScore++;
+};
+
+const computerWins = function () {
+  console.log(`COMPUTER WINS`);
+  computerScore++;
+};
+
 const gameLogic = function (player, computer) {
   if (player == computer) {
     return console.log('DRAW');
   }
   if (player == 'rock' && computer == 'paper') {
-    console.log(`PLAYER WINS (${player} beats ${computer})`);
+    playerWins();
   } else if (player == 'rock' && computer == 'scissors') {
-    console.log(`COMPUTER WINS (${player} beats ${computer})`);
+    computerWins();
   }
   if (player == 'paper' && computer == 'rock') {
-    console.log(`PLAYER WINS (${player} beats ${computer})`);
+    playerWins();
   } else if (player == 'paper' && computer == 'scissors') {
-    console.log(`COMPUTER WINS (${player} beats ${computer})`);
+    computerWins();
   }
   if (player == 'scissors' && computer == 'paper') {
-    console.log(`PLAYER WINS (${player} beats ${computer})`);
+    playerWins();
   } else if (player == 'scissors' && computer == 'rock') {
-    console.log(`COMPUTER WINS (${player} beats ${computer})`);
+    computerWins();
   }
 };
 
@@ -63,6 +76,9 @@ submit.addEventListener('click', (e) => {
   e.preventDefault();
   const playerChoice = input.value.toLowerCase();
   const computerChoice = getComputerChoice();
-  console.log(playerChoice, computerChoice);
+  console.log(
+    `Player chooses: ${playerChoice},`,
+    `Computer chooses: ${computerChoice}`
+  );
   gameLogic(playerChoice, computerChoice);
 });
