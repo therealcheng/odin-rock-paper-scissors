@@ -49,8 +49,15 @@ const computerWins = function () {
   ).innerHTML = `<h1>Score: player ${playerScore} computer ${computerScore}</h1>`;
 };
 
+const draw = function () {
+  document.querySelector(
+    '.score'
+  ).innerHTML = `<h1>Score: player ${playerScore} computer ${computerScore}</h1>`;
+};
+
 const gameLogic = function (player, computer) {
   if (player == computer) {
+    draw();
     return console.log('DRAW');
   }
   if (player == 'rock' && computer == 'paper') {
