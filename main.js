@@ -25,11 +25,10 @@ setupCounter(document.querySelector('#counter'));
 const getComputerChoice = function () {
   const choice = ['rock', 'paper', 'scissors']; // array
   // pick random string from array
-  let genChoice = choice[Math.floor(Math.random() * choice.length)]; // rand 1-3
-  console.log(genChoice);
+  let computerChoice = choice[Math.floor(Math.random() * choice.length)]; // rand 1-3
+  // console.log(computerChoice);
+  return computerChoice;
 };
-
-getComputerChoice();
 
 const input = document.getElementById('choice');
 const submit = document.getElementById('submit');
@@ -41,5 +40,9 @@ input.addEventListener('click', (e) => {
 
 submit.addEventListener('click', (e) => {
   e.preventDefault();
-  console.log('works');
+  const playerChoice = input.value.toLowerCase();
+  const computerChoice = getComputerChoice();
+  console.log(playerChoice, computerChoice);
+  // if (input.value == computerChoice) console.log('DRAW')
+  // else if (input.value == rock )
 });
