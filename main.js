@@ -2,25 +2,25 @@ import './style.css';
 import javascriptLogo from './javascript.svg';
 import { setupCounter } from './counter.js';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`;
+// document.querySelector('#app').innerHTML = `
+//   <div>
+//     <a href="https://vitejs.dev" target="_blank">
+//       <img src="/vite.svg" class="logo" alt="Vite logo" />
+//     </a>
+//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+//       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
+//     </a>
+//     <h1>Hello Vite!</h1>
+//     <div class="card">
+//       <button id="counter" type="button"></button>
+//     </div>
+//     <p class="read-the-docs">
+//       Click on the Vite logo to learn more
+//     </p>
+//   </div>
+// `;
 
-setupCounter(document.querySelector('#counter'));
+// setupCounter(document.querySelector('#counter'));
 
 let playerScore = 0;
 let computerScore = 0;
@@ -36,11 +36,17 @@ const getComputerChoice = function () {
 const playerWins = function () {
   console.log(`PLAYER WINS`);
   playerScore++;
+  document.querySelector(
+    '.score'
+  ).innerHTML = `<h1>Score: player ${playerScore} computer ${computerScore}</h1>`;
 };
 
 const computerWins = function () {
   console.log(`COMPUTER WINS`);
   computerScore++;
+  document.querySelector(
+    '.score'
+  ).innerHTML = `<h1>Score: player ${playerScore} computer ${computerScore}</h1>`;
 };
 
 const gameLogic = function (player, computer) {
