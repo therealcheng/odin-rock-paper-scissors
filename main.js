@@ -30,6 +30,27 @@ const getComputerChoice = function () {
   return computerChoice;
 };
 
+const gameLogic = function (player, computer) {
+  if (player == computer) {
+    return console.log('DRAW');
+  }
+  if (player == 'rock' && computer == 'paper') {
+    console.log(`PLAYER WINS (${player} beats ${computer})`);
+  } else if (player == 'rock' && computer == 'scissors') {
+    console.log(`COMPUTER WINS (${player} beats ${computer})`);
+  }
+  if (player == 'paper' && computer == 'rock') {
+    console.log(`PLAYER WINS (${player} beats ${computer})`);
+  } else if (player == 'paper' && computer == 'scissors') {
+    console.log(`COMPUTER WINS (${player} beats ${computer})`);
+  }
+  if (player == 'scissors' && computer == 'paper') {
+    console.log(`PLAYER WINS (${player} beats ${computer})`);
+  } else if (player == 'scissors' && computer == 'rock') {
+    console.log(`COMPUTER WINS (${player} beats ${computer})`);
+  }
+};
+
 const input = document.getElementById('choice');
 const submit = document.getElementById('submit');
 
@@ -43,6 +64,5 @@ submit.addEventListener('click', (e) => {
   const playerChoice = input.value.toLowerCase();
   const computerChoice = getComputerChoice();
   console.log(playerChoice, computerChoice);
-  // if (input.value == computerChoice) console.log('DRAW')
-  // else if (input.value == rock )
+  gameLogic(playerChoice, computerChoice);
 });
