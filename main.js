@@ -40,12 +40,24 @@ const htmlUpdate = function (winMsg) {
 
 const playerWins = function () {
   playerScore++;
-  htmlUpdate('PLAYER WINS!');
+  if (playerScore === 5) {
+    document.body.style.backgroundColor = 'orange';
+    htmlUpdate('GAME OVER: PLAYER ONE WINS');
+  } else {
+    document.body.style.backgroundColor = 'green';
+    htmlUpdate('PLAYER WINS!');
+  }
 };
 
 const computerWins = function () {
   computerScore++;
-  htmlUpdate('COMPUTER WINS!');
+  if (computerScore === 5) {
+    document.body.style.backgroundColor = 'orange';
+    htmlUpdate('GAME OVER: COMPUTER WINS');
+  } else {
+    document.body.style.backgroundColor = 'red';
+    htmlUpdate('COMPUTER WINS!');
+  }
 };
 
 const draw = function () {
@@ -81,6 +93,7 @@ const btnScissors = document.querySelector('.btn-scissors');
 
 btnRock.addEventListener('click', (e) => {
   e.preventDefault();
+  if (playerScore >= 5 || computerScore >= 5) return;
   const playerChoice = btnRock.innerHTML;
   const computerChoice = getComputerChoice();
   console.log(
@@ -92,6 +105,7 @@ btnRock.addEventListener('click', (e) => {
 
 btnPaper.addEventListener('click', (e) => {
   e.preventDefault();
+  if (playerScore >= 5 || computerScore >= 5) return;
   const playerChoice = btnPaper.innerHTML;
   const computerChoice = getComputerChoice();
   console.log(
@@ -103,6 +117,7 @@ btnPaper.addEventListener('click', (e) => {
 
 btnScissors.addEventListener('click', (e) => {
   e.preventDefault();
+  if (playerScore >= 5 || computerScore >= 5) return;
   const playerChoice = btnScissors.innerHTML;
   const computerChoice = getComputerChoice();
   console.log(
