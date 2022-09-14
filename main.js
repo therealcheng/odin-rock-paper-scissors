@@ -24,7 +24,7 @@ import { setupCounter } from './counter.js';
 
 let playerScore = 0;
 let computerScore = 0;
-
+let winner;
 // ! Make a number generator
 
 const getComputerChoice = function () {
