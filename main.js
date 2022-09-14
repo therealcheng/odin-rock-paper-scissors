@@ -27,7 +27,7 @@ let computerScore = 0;
 let winner;
 
 const getComputerChoice = function () {
-  const choice = ['rock', 'paper', 'scissors']; // array
+  const choice = ['Rock', 'Paper', 'Scissors']; // array
   let computerChoice = choice[Math.floor(Math.random() * choice.length)]; // rand 1-3
   return computerChoice;
 };
@@ -59,15 +59,15 @@ const gameLogic = function (player, computer) {
     return;
   }
   if (
-    (player == 'rock' && computer == 'paper') ||
-    (player == 'paper' && computer == 'rock') ||
-    (player == 'scissors' && computer == 'paper')
+    (player == 'Rock' && computer == 'Paper') ||
+    (player == 'Paper' && computer == 'Rock') ||
+    (player == 'Scissors' && computer == 'Paper')
   ) {
     playerWins();
   } else if (
-    (player == 'rock' && computer == 'scissors') ||
-    (player == 'paper' && computer == 'scissors') ||
-    (player == 'scissors' && computer == 'rock')
+    (player == 'Rock' && computer == 'Scissors') ||
+    (player == 'Paper' && computer == 'Scissors') ||
+    (player == 'Scissors' && computer == 'Rock')
   ) {
     computerWins();
   }
@@ -75,15 +75,35 @@ const gameLogic = function (player, computer) {
 
 const input = document.getElementById('choice');
 const submit = document.getElementById('submit');
+const btnRock = document.querySelector('.btn-rock');
+const btnPaper = document.querySelector('.btn-paper');
+const btnScissors = document.querySelector('.btn-scissors');
 
-input.addEventListener('click', (e) => {
+btnRock.addEventListener('click', (e) => {
   e.preventDefault();
-  input.value = '';
+  const playerChoice = btnRock.innerHTML;
+  const computerChoice = getComputerChoice();
+  console.log(
+    `Player chooses: ${playerChoice},`,
+    `Computer chooses: ${computerChoice}`
+  );
+  gameLogic(playerChoice, computerChoice);
 });
 
-submit.addEventListener('click', (e) => {
+btnPaper.addEventListener('click', (e) => {
   e.preventDefault();
-  const playerChoice = input.value.toLowerCase();
+  const playerChoice = btnPaper.innerHTML;
+  const computerChoice = getComputerChoice();
+  console.log(
+    `Player chooses: ${playerChoice},`,
+    `Computer chooses: ${computerChoice}`
+  );
+  gameLogic(playerChoice, computerChoice);
+});
+
+btnScissors.addEventListener('click', (e) => {
+  e.preventDefault();
+  const playerChoice = btnScissors.innerHTML;
   const computerChoice = getComputerChoice();
   console.log(
     `Player chooses: ${playerChoice},`,
