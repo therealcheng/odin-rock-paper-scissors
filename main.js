@@ -25,7 +25,6 @@ import { setupCounter } from './counter.js';
 let playerScore = 0;
 let computerScore = 0;
 let winner;
-// ! Make a number generator
 
 const getComputerChoice = function () {
   const choice = ['rock', 'paper', 'scissors']; // array
@@ -33,22 +32,20 @@ const getComputerChoice = function () {
   return computerChoice;
 };
 
-const htmlUpdate = function () {
+const htmlUpdate = function (winMsg) {
   document.querySelector(
     '.score'
-  ).innerHTML = `<h1>Score: player ${playerScore} computer ${computerScore}</h1>`;
+  ).innerHTML = `<h1>${winMsg}<br> Score: player ${playerScore} computer ${computerScore}</h1>`;
 };
 
 const playerWins = function () {
-  console.log(`PLAYER WINS`);
   playerScore++;
-  htmlUpdate();
+  htmlUpdate('PLAYER WINS!');
 };
 
 const computerWins = function () {
-  console.log(`COMPUTER WINS`);
   computerScore++;
-  htmlUpdate();
+  htmlUpdate('COMPUTER WINS!');
 };
 
 const draw = function () {
@@ -58,7 +55,7 @@ const draw = function () {
 const gameLogic = function (player, computer) {
   if (player == computer) {
     draw();
-    console.log('DRAW');
+    htmlUpdate('DRAW');
     return;
   }
   if (
