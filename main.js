@@ -25,54 +25,53 @@ import { setupCounter } from './counter.js';
 let playerScore = 0;
 let computerScore = 0;
 
+// ! Make a number generator
+
 const getComputerChoice = function () {
   const choice = ['rock', 'paper', 'scissors']; // array
-  // pick random string from array
   let computerChoice = choice[Math.floor(Math.random() * choice.length)]; // rand 1-3
-  // console.log(computerChoice);
   return computerChoice;
+};
+
+const htmlUpdate = function () {
+  document.querySelector(
+    '.score'
+  ).innerHTML = `<h1>Score: player ${playerScore} computer ${computerScore}</h1>`;
 };
 
 const playerWins = function () {
   console.log(`PLAYER WINS`);
   playerScore++;
-  document.querySelector(
-    '.score'
-  ).innerHTML = `<h1>Score: player ${playerScore} computer ${computerScore}</h1>`;
+  htmlUpdate();
 };
 
 const computerWins = function () {
   console.log(`COMPUTER WINS`);
   computerScore++;
-  document.querySelector(
-    '.score'
-  ).innerHTML = `<h1>Score: player ${playerScore} computer ${computerScore}</h1>`;
+  htmlUpdate();
 };
 
 const draw = function () {
-  document.querySelector(
-    '.score'
-  ).innerHTML = `<h1>Score: player ${playerScore} computer ${computerScore}</h1>`;
+  htmlUpdate();
 };
 
 const gameLogic = function (player, computer) {
   if (player == computer) {
     draw();
-    return console.log('DRAW');
+    console.log('DRAW');
+    return;
   }
-  if (player == 'rock' && computer == 'paper') {
+  if (
+    (player == 'rock' && computer == 'paper') ||
+    (player == 'paper' && computer == 'rock') ||
+    (player == 'scissors' && computer == 'paper')
+  ) {
     playerWins();
-  } else if (player == 'rock' && computer == 'scissors') {
-    computerWins();
-  }
-  if (player == 'paper' && computer == 'rock') {
-    playerWins();
-  } else if (player == 'paper' && computer == 'scissors') {
-    computerWins();
-  }
-  if (player == 'scissors' && computer == 'paper') {
-    playerWins();
-  } else if (player == 'scissors' && computer == 'rock') {
+  } else if (
+    (player == 'rock' && computer == 'scissors') ||
+    (player == 'paper' && computer == 'scissors') ||
+    (player == 'scissors' && computer == 'rock')
+  ) {
     computerWins();
   }
 };
